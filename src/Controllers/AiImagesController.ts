@@ -10,12 +10,13 @@ class AiImageController {
         this.aiImageService = new AiImageService();
     }
 
-    public async getMessages(req: Request, res: Response, next: NextFunction): Promise<string | undefined> {
+    public async getMessages(req: Request, res: Response, next: NextFunction): Promise<string | any> {
         const request : ImagePromptParams = req.body as ImagePromptParams;
         console.log("request", request);
-        console.log("req.body",req.body);
+        
+        let url = await this.aiImageService.getImageUrl(request);
 
-        return await this.aiImageService.getImageUrl(request);
+        res.status(200).json({url})
     }
 
     public routes(): Router {
