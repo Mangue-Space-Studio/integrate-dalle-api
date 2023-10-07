@@ -1,37 +1,24 @@
 import IAiImageService from "./IAiImageService";
 import axios from "axios";
 import ImagePromptParams from "../../Controllers/RequestParams/ImagePromptParams";
+import OpenAI from "openai";
 
 class AiImageService implements IAiImageService {
-    async getImageUrl(params: ImagePromptParams): Promise<string> {
+    public openAi : OpenAI;
+
+    constructor(){
+        this.openAi = new OpenAI({apiKey: process.env.OPEN_API_KEY});
+    }
+
+    async getImageUrl(params: ImagePromptParams): Promise<string | undefined> {
         let prompt = `Crie uma ilustração com linhas pretas e branca para criança de ${params.age} colorir com a personagem: ${params.character} que é ${params.characterDescription}.`;
+        const response = await this.openAi.images.generate({
+            prompt: prompt,
+            n: 1,
+            size: "1024x1024",
+          });
 
-        console.log('cheguei aqui');
-        
-        try {
-            const response = await axios.post(
-                'https://api.openai.com/v1/images/generate',
-                {
-                    model: 'image-alpha-001',
-                    prompt: prompt,
-                    max_tokens: 100
-                },
-                {
-                    headers: {
-                        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
-                        'Content-Type': 'application/json',
-                    },
-                }
-            );
-
-            const imageUrl: string = response.data.url;
-            console.table(response)
-            return imageUrl;
-        }
-        catch (error) {
-            console.error('Erro ao gerar a imagem:', error);
-            throw error;
-        }
+          return response.data[0].url;
     }
 };
 

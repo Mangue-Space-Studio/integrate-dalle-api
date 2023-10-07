@@ -10,7 +10,7 @@ class AiImageController {
         this.aiImageService = new AiImageService();
     }
 
-    public async getMessages(req: Request, res: Response, next: NextFunction): Promise<string> {
+    public async getMessages(req: Request, res: Response, next: NextFunction): Promise<string | undefined> {
         const request : ImagePromptParams = req.body;
 
         return await this.aiImageService.getImageUrl(request);
