@@ -1,7 +1,8 @@
 import express from 'express';
 import AiImageController from './Controllers/AiImagesController';
 import dotenv from 'dotenv';
-import cors from 'cors'
+import cors from 'cors';
+// import router from './Controllers/teste';
 
 const app = express()
 dotenv.config();
@@ -11,7 +12,10 @@ app.use(express.json());
 app.use(cors());
 
 // Routes:
-app.use(new AiImageController().routes());
+const imageController : AiImageController = new AiImageController()
+app.use(imageController.routes());
+
+// app.use(router)
 
 const port = process.env.PORT || 3000;
 
