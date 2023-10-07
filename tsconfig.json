@@ -1,0 +1,19 @@
+/* Visit https://aka.ms/tsconfig to read more about this file */
+{
+  "compilerOptions": {
+    "target": "es2019",                                  
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "rootDir": "src",
+    "typeRoots": [
+      "./src/@types",
+      "./node_modules/@types"
+    ],                              
+    "outDir": "./dist", 
+    "removeComments": false,
+    "esModuleInterop": true,                             
+    "forceConsistentCasingInFileNames": true,           
+    "strict": true,                                     
+    "skipLibCheck": true                                 
+  }
+}
