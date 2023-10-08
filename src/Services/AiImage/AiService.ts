@@ -12,8 +12,8 @@ class AiService implements IAiService {
     }
 
     public async getStory(params: TextPromptParams): Promise<string | any> {
-        const prompt = `Quero criar uma história com o animal: ${params.character}, para aprender a sobre ${params.subject} para crianças com
-        a idade de ${params.age}`;
+        const prompt = `Crie uma história com o animal: ${params.character}, para aprender sobre ${params.subject}, 
+        trazendo assuntos e narrativas interessantes para crianças com a idade de ${params.age} anos.`;
 
         const response = await this.openAi.chat.completions.create({
             model: 'gpt-3.5-turbo',
@@ -32,7 +32,8 @@ class AiService implements IAiService {
     public async getImageUrl(params: ImagePromptParams): Promise<string | any> {
         console.log(`run [getImageUrl] ${params}`)
 
-        let prompt = `Crie uma ilustração com linhas pretas e branca para criança de ${params.age} colorir com a personagem: ${params.character} que é ${params.characterDescription}.`;
+        let prompt = `Crie uma ilustração com linhas pretas e branca para criança de ${params.age} anos 
+        colorir com a personagem: ${params.character} que é ${params.characterDescription}.`;
 
         console.log(prompt);
 
