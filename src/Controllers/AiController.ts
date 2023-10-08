@@ -60,8 +60,8 @@ class AiController {
     public routes(): Router {
         const router = Router();
 
-        router.get("/ai-images", this.getImageLink.bind(this));
-        router.get("/ai-stories", this.getStory.bind(this));
+        router.post("/ai-images", this.getImageLink.bind(this));
+        router.post("/ai-stories", this.getStory.bind(this));
 
         return router;
     }
