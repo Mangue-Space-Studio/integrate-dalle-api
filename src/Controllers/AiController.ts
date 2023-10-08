@@ -3,6 +3,7 @@ import IAiService from "../Services/AiImage/IAiService";
 import AiService from "../Services/AiImage/AiService";
 import ImagePromptParams from "./RequestParams/ImagePromptParams";
 import TextPromptParams from "./RequestParams/TextPromptParams";
+import StoryConstants from "../Domain/StoryConstants";
 
 class AiController {
     readonly aiImageService: IAiService;
@@ -31,14 +32,14 @@ class AiController {
 
                 res.status(200).json({ story });
             }
+            else {
+                res.status(400).json({ error: "Personagem inválido." });
+            }
         }
-
         catch (error) {
             console.error(error);
             res.status(500).json({ error: "Ocorreu um erro ao gerar a história." });
         }
-
-        res.status(400).json({ error: "Personagem inválido." });
     }
 
     public routes(): Router {

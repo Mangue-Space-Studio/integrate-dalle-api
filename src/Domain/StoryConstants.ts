@@ -55,3 +55,5 @@ class StoryConstants {
         "Burro",
     ];
 }
+
+export default StoryConstants;
