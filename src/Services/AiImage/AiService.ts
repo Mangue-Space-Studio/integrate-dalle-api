@@ -41,7 +41,7 @@ class AiService implements IAiService {
             prompt: prompt,
             n: 1,
             response_format: "url",
-            size: "256x256",
+            size: "512x512",
         });
 
         console.log(response);
