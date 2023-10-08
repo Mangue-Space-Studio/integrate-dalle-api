@@ -1,8 +1,8 @@
 import express from 'express';
-import AiImageController from './Controllers/AiImagesController';
+import AiController from './Controllers/AiController';
+import HealthController from './Controllers/HealthController';
 import dotenv from 'dotenv';
 import cors from 'cors';
-// import router from './Controllers/teste';
 
 const app = express()
 dotenv.config();
@@ -11,11 +11,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-// Routes:
-const imageController : AiImageController = new AiImageController()
-app.use(imageController.routes());
-
-// app.use(router)
+// Controllers:
+app.use(new AiController().routes());
+app.use(new HealthController().routes());
 
 const port = process.env.PORT || 3000;
 
