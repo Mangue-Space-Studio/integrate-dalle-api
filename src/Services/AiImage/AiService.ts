@@ -12,8 +12,8 @@ class AiService implements IAiService {
     }
 
     public async getStory(params: TextPromptParams): Promise<string | any> {
-        const prompt = `Crie uma história com o animal: ${params.character}, para aprender sobre ${params.subject}, 
-        trazendo assuntos e narrativas interessantes para crianças com a idade de ${params.age} anos.`;
+        const prompt = `Crie uma história tipo fábula com o animal: ${params.character}, para aprender sobre ${params.subject}, con conceitos, teorias e leis 
+        trazendo assuntos e narrativas interessantes para crianças com a idade de ${params.age} anos de maneira leve e divertida.`;
 
         const response = await this.openAi.chat.completions.create({
             model: 'gpt-3.5-turbo',
