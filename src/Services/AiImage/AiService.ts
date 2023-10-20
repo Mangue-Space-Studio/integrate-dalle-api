@@ -23,7 +23,7 @@ class AiService implements IAiService {
                     content: prompt,
                 },
             ],
-            max_tokens: 100,
+            max_tokens: 500,
         });
 
         return response.choices[0].message.content;
